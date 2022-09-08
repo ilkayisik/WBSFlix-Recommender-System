@@ -16,6 +16,13 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from PIL import Image
 from datetime import datetime
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+install('sklearn')
 
 # %% load data
 movie_df = pd.read_csv('https://raw.githubusercontent.com/sherwan-m/WBSFLIX_Recommender_System/main/ml-latest-small/movies.csv')
@@ -165,10 +172,11 @@ def top_n_user_based(user_id , n , genres, time_period):
                                  values='rating',
                                  index='userId',
                                  columns='movieId')
+
     new_users_items.fillna(0, inplace=True)
     new_user_similarities = pd.DataFrame(cosine_similarity(new_users_items),
-                                 columns=new_users_items.index,
-                                 index=new_users_items.index)
+                                         columns=new_users_items.index,
+                                         index=new_users_items.index)
     new_weights = (
     new_user_similarities.query("userId!=@user_id")[user_id] / sum(new_user_similarities.query("userId!=@user_id")[user_id])
           )
@@ -188,9 +196,6 @@ def top_n_user_based(user_id , n , genres, time_period):
         return result.drop(columns=['predicted_rating']).head(n)
 
     return recommendations.reset_index(drop=True).drop(columns=['predicted_rating']).head(n)
-
-
-
 # %% STREAMLIT
 # Set configuration
 st.set_page_config(page_title="WBSFLIX",
