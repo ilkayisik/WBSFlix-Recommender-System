@@ -224,7 +224,8 @@ if item_based_rec:
                                     options=pd.Series(movie_list),
                                     help="Select a movie you like",
                                     key='item_select',
-                                    default=choice(short_movie_list))
+                                    # default=choice(short_movie_list)
+                                    )
 
         nr_rec = st.slider("Number of recommendations",
                            min_value=1,
