@@ -207,9 +207,9 @@ st.set_page_config(page_title="WBSFLIX",
     # text color: #FAFAFA, secondary background color: #E50914
 
 # Set the logo of app
-st.sidebar.image("/Users/ilkayisik/Desktop/WBS_DS/Project08/wbs_app/wbs_logo.png",
+st.sidebar.image("wbs_logo.png",
                  width=300, clamp=True)
-welcome_img = Image.open('/Users/ilkayisik/Desktop/WBS_DS/Project08/wbs_app/welcome_page_img01.png')
+welcome_img = Image.open('welcome_page_img01.png')
 st.image(welcome_img)
 st.sidebar.markdown("""
 # 🎬 Welcome to the next generation movie recommendation app
