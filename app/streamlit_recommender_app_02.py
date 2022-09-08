@@ -178,7 +178,6 @@ def top_n_user_based(user_id , n , genres, time_period):
     new_weights = (
     new_user_similarities.query("userId!=@user_id")[user_id] / sum(new_user_similarities.query("userId!=@user_id")[user_id])
           )
-
     not_watched_movies = new_users_items.loc[new_users_items.index!=user_id, new_users_items.loc[user_id,:]==0]
     weighted_averages = pd.DataFrame(not_watched_movies.T.dot(new_weights), columns=["predicted_rating"])
     recommendations = weighted_averages.merge(movie_df, left_index=True, right_on="movieId").sort_values("predicted_rating", ascending=False)
