@@ -16,18 +16,10 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from PIL import Image
 from datetime import datetime
-# import subprocess
-# import sys
-
-# def install(package):
-#     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-
 import os
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
-
 # %% load data
 movie_df = pd.read_csv('https://raw.githubusercontent.com/sherwan-m/WBSFLIX_Recommender_System/main/ml-latest-small/movies.csv')
 rating_df = pd.read_csv('https://raw.githubusercontent.com/sherwan-m/WBSFLIX_Recommender_System/main/ml-latest-small/ratings.csv')
