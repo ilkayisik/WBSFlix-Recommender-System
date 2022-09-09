@@ -310,7 +310,8 @@ if user_based_rec:
                 "Genre",
                 options=genre_list,
                 help="Select the genre of the movie you would like to watch",
-                default=genre_default)
+                #default=genre_default
+                )
 
         nr_rec = st.slider("Number of recommendations",
                            min_value=1,
